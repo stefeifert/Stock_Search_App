@@ -1,25 +1,26 @@
 const stocks = ['MCD', 'AMZN', 'TGT', 'NFLX'];
 
-const displayStockInfo = function () {
-
-const stock = $(this).attr('data-name');
-const queryURL = `https://api.iextrading.com/1.0/stock/${stock}/batch?types=quote,news&range=1m&last=1`;
-
-let validationList= [];
-    const symbolList = "/ref-data/symbols"
-    const stockListAll = function () {
-      let qURL = `${endpoint}${symbolList}`;
-      $.ajax({
+let validationList = [];
+const endpoint = "https://api.iextrading.com/1.0/"
+const symbolList = "/ref-data/symbols"
+const stockListAll = function () {
+    let qURL = `${endpoint}${symbolList}`;
+    $.ajax({
         url: qURL,
         method: 'GET'
-      }).then(function (response) {
-        for (let i = 0; i<response.length; i++){
-          validationList.push(response[i].symbol)
-        } 
-      });
-    }
-    console.log(validationList);
-    
+    }).then(function (response) {
+        for (let i = 0; i < response.length; i++) {
+            validationList.push(response[i].symbol)
+        }
+    });
+}
+
+const displayStockInfo = function () {
+
+    const stock = $(this).attr('data-name');
+    const queryURL = `https://api.iextrading.com/1.0/stock/${stock}/batch?types=quote,news&range=1m&last=1`;
+
+
     $.ajax({
         url: queryURL,
         method: 'GET'
@@ -85,3 +86,4 @@ $('#add-stock').on('click', addButton);
 $('#buttons-view').on('click', '.stock-btn', displayStockInfo);
 
 render();
+stockListAll();
