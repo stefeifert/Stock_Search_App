@@ -33,7 +33,7 @@ $(document).ready(function () {
                 return false
             }
             if(validationList.includes(stock)){
-            alert(""+stock+" is a VAlID stock!!")
+            alert(""+stock+" is a valid stock!!")
             
             return false;
             }
@@ -131,7 +131,7 @@ $(document).ready(function () {
         //template ajax call.
         $.ajax({
             url: queryURL,
-            //defining wht method we are doing in this case we are GETting information
+            //defining what method we are doing in this case we are Getting information
             method: 'GET'
         })
             //promise function that takes in all the information above and gathers the whole query into a variable
@@ -157,7 +157,7 @@ $(document).ready(function () {
                 stockDiv.append(stockName);
                 stockDiv.append(stockPriceHigh);
                 stockDiv.append(stockPriceLow);
-                //appending new div with 3 paragraphs to HTMl Div that already exists
+                //appending new div with 3 paragraphs to HTML Div that already exists
                 $('#stockView').append(stockDiv);
             });
     };
@@ -168,7 +168,7 @@ $(document).ready(function () {
         // console.log(queryURL);
         $.ajax({
             url: queryURL,
-            //defining wht method we are doing in this case we are GETting information
+            //defining what method we are doing in this case we are Getting information
             method: 'GET'
         })
             .done(function (response) {
